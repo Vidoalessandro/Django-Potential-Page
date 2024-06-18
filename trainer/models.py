@@ -9,11 +9,12 @@ class TrainerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     specialty = models.CharField(max_length=100)
     description = models.TextField()
+    is_verified = models.BooleanField(default=False)
     creation_date = models.DateTimeField(default=timezone.now)
     profile_picture = models.ImageField(upload_to='users/', default='users/user_image.png')
     profile_picture_url = models.URLField(blank=True)
     routines = models.ManyToManyField(Routine, related_name='trainer', blank=True)
-    customers = models.ManyToManyField(CustomerProfile, related_name='trainers', blank=True)
+    customers = models.ManyToManyField(CustomerProfile, related_name='trainer', blank=True)
     
     def __str__(self):
         return self.user.username

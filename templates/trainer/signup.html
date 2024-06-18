@@ -1,0 +1,21 @@
+{% extends '../website/base.html' %}
+
+{% block content %}
+
+<main class="container d-flex flex-column align-items-center">
+    <section class="card card-body " style="width: 500px;">
+        <h2 class="mb-5 text-center">Trainer profile</h2>
+        <form method="post" class="d-flex flex-column">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark align-self-center">Register</button>
+        </form>
+        {% if password_error %}
+            <div class="error" style="color: red; margin-top: 10px;">
+                {{ password_error }}
+            </div>
+        {% endif %}
+    </section>
+</main>
+    
+{% endblock %}
