@@ -1,0 +1,58 @@
+{% extends '../website/base.html' %}
+
+{% block content %}
+
+<main class="container d-flex flex-column align-items-center">
+    <section class="card card-body " style="width: 500px;">
+        <h2 class="mb-5 text-center">Edit profile</h2>
+        <form class="mb-1" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group d-flex flex-column align-items-center">
+                <label for="id_profile_picture">Current Profile Picture</label><br>
+                <img src="{{ request.user.trainerprofile.profile_picture.url }}" alt="Profile Picture" width="150px" height="150px" class="mb-3 rounded-circle">
+            </div>
+            {{ form.profile_picture.label_tag }}
+            {{ form.profile_picture }}
+    
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {% for error in form.username.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+
+            {{ form.specialty.label_tag }}
+            {{ form.specialty }}
+    
+            {{ form.description.label_tag }}
+            {{ form.description }}
+    
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+        <button type="button" class="btn btn-danger align-self-start" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">
+            Delete profile
+        </button>
+    </section>
+</main>
+
+<div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteProfileModalLabel">Confirm Profile Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete your profile? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form method="post" action="{% url 'delete_profile_trainer' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete my profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

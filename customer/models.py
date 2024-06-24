@@ -6,6 +6,7 @@ from routines.models import Routine
 # Create your models here.
 class CustomerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
     creation_date = models.DateTimeField(default=timezone.now)
     is_premium = models.BooleanField(default=False)
     profile_picture = models.ImageField(upload_to='users/', default='users/user_image.png')

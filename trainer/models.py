@@ -8,7 +8,7 @@ from customer.models import CustomerProfile
 class TrainerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     specialty = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     is_verified = models.BooleanField(default=False)
     creation_date = models.DateTimeField(default=timezone.now)
     profile_picture = models.ImageField(upload_to='users/', default='users/user_image.png')

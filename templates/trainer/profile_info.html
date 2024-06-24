@@ -1,0 +1,36 @@
+{% extends '../website/base.html' %}
+
+{% block content %}
+
+<main class="container py-5">
+    <section class="card card-body d-flex flex-row mb-4">
+            <img class="rounded-circle" src="{% if user.trainerprofile %}{{ user.trainerprofile.profile_picture.url }}{% else %}{{ user.customerprofile.profile_picture.url }}{% endif %}" alt="" width='250px' height="250px" alt="">
+            <div class="ms-4 mt-1" style="width: 900px;">
+                <h1 class="" style="font-size: 3.5rem; font-weight: 700;">{{user.username}} <img class="mb-2" src="https://cdn-icons-png.freepik.com/256/7641/7641727.png?semt=ais_hybrid" width="50px" height="50px" alt=""></h1>
+                <h4 class="" style="font-weight: 400; color: #11CD61;">{{user.trainerprofile.specialty}}</h4>
+                <hr class="mt-2 mb-4">
+                {% if not user.trainerprofile.description %}
+                    <blockquote class="blockquote text-secondary">
+                        <p class="mb-0">You dont have a description about you or your interests</p>
+                    </blockquote>
+                {% else %}
+                    <blockquote class="blockquote text-secondary">
+                        <p>{{user.trainerprofile.description}}</p>
+                    </blockquote>
+                {% endif %}
+            </div>
+            <div class="d-flex justify-content-end" style="width: 210px;">
+                <a href="{% url 'edit-profile-trainer' %}"><button class="btn btn-dark">Edit profile</button></a>
+            </div>
+    </section>
+    <section class="d-flex justify-content-evenly mt-5">
+        <a href="" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-25" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/736x/29/33/92/293392ff84262b908cd8d7e7e148d81a.jpg'); background-size: cover; background-position: center;">
+            <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Generic routines</h3>
+        </article></a>
+        <a href="" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-10" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/17/e7/14/17e7149e22e303abc9f6ea193621ee99.jpg'); background-size: cover; background-position: center;">
+            <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Specialized routines</h3>
+        </article></a>
+    </section>
+</main>
+    
+{% endblock %}
