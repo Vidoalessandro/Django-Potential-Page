@@ -14,7 +14,7 @@
                         <p class="mb-0">You dont have a description about you or your interests</p>
                     </blockquote>
                 {% else %}
-                    <blockquote class="blockquote text-secondary">
+                    <blockquote class="blockquote text-secondary" style="white-space: pre-line;">
                         <p>{{user.trainerprofile.description}}</p>
                     </blockquote>
                 {% endif %}
@@ -24,11 +24,11 @@
             </div>
     </section>
     <section class="d-flex justify-content-evenly mt-5">
-        <a href="" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-25" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/736x/29/33/92/293392ff84262b908cd8d7e7e148d81a.jpg'); background-size: cover; background-position: center;">
-            <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Generic routines</h3>
+        <a href="{% url 'routine_list' %}" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-25" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/736x/29/33/92/293392ff84262b908cd8d7e7e148d81a.jpg'); background-size: cover; background-position: center;">
+            <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Routines</h3>
         </article></a>
-        <a href="" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-10" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/17/e7/14/17e7149e22e303abc9f6ea193621ee99.jpg'); background-size: cover; background-position: center;">
-            <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Specialized routines</h3>
+        <a href="{% url 'exercises-list' %}" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-10" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/17/e7/14/17e7149e22e303abc9f6ea193621ee99.jpg'); background-size: cover; background-position: center;">
+            <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Exercises</h3>
         </article></a>
     </section>
 </main>

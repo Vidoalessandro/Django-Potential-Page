@@ -18,7 +18,7 @@
                             <p class="mb-0">You dont have a description about you or your interests</p>
                         </blockquote>
                     {% else %}
-                        <blockquote class="blockquote text-secondary">
+                        <blockquote class="blockquote text-secondary" style="white-space: pre-line;">
                             <p>{{user.customerprofile.description}}</p>
                         </blockquote>
                     {% endif %}
@@ -28,10 +28,10 @@
                 </div>
         </section>
         <section class="d-flex justify-content-evenly mt-5">
-            <a href="" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-25" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/32/f2/72/32f27216482720011061995d6e9880f3.jpg'); background-size: cover; background-position: center;">
+            <a href="{% url 'routine_list' %}" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-25" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/32/f2/72/32f27216482720011061995d6e9880f3.jpg'); background-size: cover; background-position: center;">
                 <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">My routines</h3>
             </article></a>
-            <a href="" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-10" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/c9/d3/6e/c9d36e4462e49d12e895bb4613d21cce.jpg'); background-size: cover; background-position: center;">
+            <a href="{% url 'exercises-list' %}" style="text-decoration: none;"><article class="card card-body d-flex justify-content-center align-items-center bg-opacity-10" style="width: 500px; height: 140px; background-image: url('https://i.pinimg.com/564x/c9/d3/6e/c9d36e4462e49d12e895bb4613d21cce.jpg'); background-size: cover; background-position: center;">
                 <h3 class="mt-2" style="font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 3rem; color: azure;">Exercises</h3>
             </article></a>
         </section>

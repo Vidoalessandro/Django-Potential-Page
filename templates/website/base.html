@@ -32,11 +32,11 @@
                     {% else %}
             
                         <li class="nav-item">
-                            <a class="nav-link" href="/">My routines</a>
+                            <a class="nav-link" href="{% url 'routine_list' %}">My routines</a>
                         </li>
             
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Exercises</a>
+                            <a class="nav-link" href="{% url 'exercises-list' %}">Exercises</a>
                         </li>
 
                         <li class="nav-item">

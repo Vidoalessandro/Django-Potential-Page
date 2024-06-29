@@ -16,7 +16,35 @@
                     <h2 class="mt-3" style="color:#C9E265; font-family: Bebas Neue, sans-serif; font-weight: 400; font-style: normal; font-size: 2.5rem;">Ready to change your life?</h2>
                 {% endif %}
             {% else %}
-                <h1>Potential content page</h1>
+            <section class="d-flex flex-column justify-content-center">
+                <h1 style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 5rem;">Transforma tu vida con nuestro entrenamiento</h1>
+                
+                <div id="carouselExampleControls" class="carousel slide mt-5 mb-5 d-flex justify-content-center" data-bs-ride="carousel">
+                    <div class="carousel-inner" style="width: 350px; height: 300px;">
+                        <div class="carousel-item active d-flex justify-content-center">
+                            <img src="https://i.pinimg.com/564x/e0/8f/1c/e08f1cb5b3472ee57d0f79917bf3ba35.jpg" class="d-block" alt="..." style="width: 300px; height: 350px;">
+                        </div>
+                        <div class="carousel-item active">
+                            <img src="https://i.pinimg.com/564x/d0/21/53/d021532c6bf9e7545f711a9bfc0ca8ca.jpg" class="d-block w-100" alt="..." style="width: 300px; height: 350px;">
+                        </div>
+                        <div class="carousel-item active">
+                            <img src="https://i.pinimg.com/564x/7f/fd/cf/7ffdcfbe8bfb0b727ae08a45a6bf8d52.jpg" class="d-block w-100" alt="..." style="width: 300px; height: 350px;">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+                <h2 class="mt-4">Descubre cómo mejorar tu salud y bienestar</h2>
+                
+                <p class="mt-3" style="font-size: 1.2rem;">Con nuestro equipo de entrenadores especializados y una variedad de rutinas diseñadas para tus necesidades, estamos aquí para ayudarte a alcanzar tus objetivos de fitness.</p>
+            </section>
             {% endif %}
         </section>
     </main>

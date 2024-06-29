@@ -1,0 +1,43 @@
+{% extends '../website/base.html' %}
+
+{% block content %}
+<main class="container py-5">
+    <h1 class="mb-4" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 5rem; text-align: center;">Search Trainer Routines</h1>
+
+    <div class="row mb-4 justify-content-center">
+        <div class="col-md-4">
+            <form method="get" action="{% url 'search_trainer_routines' %}" class="d-flex">
+                <input type="text" id="trainer_name" name="trainer_name" class="form-control mr-sm-2" placeholder="Search the username of your trainer" value="{% if trainer_name %}{{ trainer_name }}{% endif %}">
+                <button type="submit" class="btn" style="background-color: #C9E265">Search</button>
+            </form>
+        </div>
+    </div>
+
+    {% if trainer_name %}
+        {% if routines %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for routine in routines %}
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 1.7rem;">{{ routine.name }}</h5>
+                                <p class="card-text text-secondary" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 1.2rem;">Trainer: {{ routine.trainer.user.username }}</p>
+                                <form action="{% url 'select_routine' routine.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success">Add Routine</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="row mb-4 justify-content-center">
+                <div class="col-md-6">
+                    <p class="text-center">No routines found for trainer '{{ trainer_name }}'.</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+</main>
+{% endblock %}

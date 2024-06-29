@@ -1,0 +1,45 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+<main class="container py-5">
+    <h1 class="mb-4" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 5rem;">Routines</h1>
+
+    {% if request.user.trainerprofile %}
+        <div class="mb-3">
+            <a href="{% url 'create_routine' %}" class="btn my-4" style="background-color: #C9E265;">Create Routine</a>
+        </div>
+    {% endif %}
+
+    {% if request.user.customerprofile %}
+        <div class="mb-3">
+            <a href="{% url 'search_trainer_routines' %}" class="btn my-4" style="background-color: #C9E265;">Add Routine</a>
+        </div>
+    {% endif %}
+    
+    {% if routines %}
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for routine in routines %}
+                <div class="col">
+                    <div class="card" style="width: 280px; height: 165px;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 1.7rem;">{{ routine.name }}</h5>
+                            {% if routine.trainer %}
+                                <p class="card-text text-secondary" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 1.2rem;">Trainer: {{ routine.trainer.user.username }}</p>
+                            {% endif %}
+                            <a href="{% url 'routine_detail' routine.id %}" class="btn btn-outline-dark">View Details</a>
+                            {% if request.user.trainerprofile == routine.trainer %}
+                                <form action="{% url 'delete_routine' routine.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger float-end">Delete</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>No routines added yet.</h2>
+    {% endif %}
+</main>
+{% endblock %}

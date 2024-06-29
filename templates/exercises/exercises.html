@@ -1,0 +1,43 @@
+{% extends '../website/base.html' %}
+
+{% block content %}
+
+<main class="container py-5">
+    <h1 class="mb-4" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 5rem;">Exercises</h1>
+    {% if exercises %}
+    <div class="row mb-4 d-flex justify-content-center">
+        <div class="col-4">
+            <form id="search-form" method="get" class="d-flex">
+                <input id="search-input" type="text" name="q" class="form-control mr-sm-2" placeholder="Search for exercises" value="{{ request.GET.q }}">
+                <button type="submit" class="btn" style="background-color: #C9E265;">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="exercise-list">
+        {% for exercise in exercises %}
+            <div class="col">
+                <div class="card" style="width: 280px; height: 320px;">
+                    <a href="{% url 'exercise-detail' exercise.pk %}" style="text-decoration: none; color: black;">
+                        <img src="{{ exercise.image.url }}" class="card-img-top" alt="{{ exercise.name }}" style="height: 220px; background-size: cover; background-position: center;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 1.7rem;">{{ exercise.name }}</h5>
+                            <p class="card-text text-secondary" style="font-family: Bebas Neue, sans-serif; font-weight: 500; font-style: normal; font-size: 1.2rem;">{{ exercise.muscle_group }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row mb-4 d-flex justify-content-center">
+        <div class="col-4">
+            <form method="get" class="d-flex">
+                <input type="text" name="q" class="form-control mr-sm-2" placeholder="Search for exercises" value="{{ request.GET.q }}">
+                <button type="submit" class="btn" style="background-color: #C9E265;">Search</button>
+            </form>
+        </div>
+    </div>
+    <h1>There isnt any exercise yet</h1>
+    {% endif %}
+</main>    
+{% endblock %}
