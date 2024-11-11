@@ -16,7 +16,7 @@
     <div class="row row-cols-1 row-cols-md-4 g-4" id="exercise-list">
         {% for exercise in exercises %}
             <div class="col">
-                <div class="card" style="width: 280px; height: 320px;">
+                <div class="card" style="width: 280px; height: 350px;">
                     <a href="{% url 'exercise-detail' exercise.pk %}" style="text-decoration: none; color: black;">
                         <img src="{{ exercise.image.url }}" class="card-img-top" alt="{{ exercise.name }}" style="height: 220px; background-size: cover; background-position: center;">
                         <div class="card-body">
